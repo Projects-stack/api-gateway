@@ -18,6 +18,18 @@ public class ApiGateWayConfig
                                 .addRequestParameter("Param", "MyValue"))
                         .uri("http://httpbin.org:80")
                 )
+                .route(p -> p.path("/api/currency-exchange/**")
+                        .uri("lb://currency-exchange")
+                )
+                .route(p -> p.path("/api/currency-conversion/**")
+                        .uri("lb://currency-conversion")
+                )
+                .route(p -> p.path("/api/currency-conversion-new/**")
+                        .filters(f -> f.rewritePath(
+                                "/api/currency-conversion-new/(?<segment>.*)",
+                                "/api/currency-conversion/${segment}"))
+                        .uri("lb://currency-conversion")
+                )
                 .build();
     }
 }

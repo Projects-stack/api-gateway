@@ -8,13 +8,13 @@ spring:
   application:
     name: "api-gateway"
 
-  # enable api gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
+#  # enable api gateway
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lowerCaseServiceId: true
 
 # eureka-client-registration
 eureka:
